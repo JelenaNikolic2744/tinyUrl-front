@@ -11,6 +11,7 @@ import { APIService } from './api.service';
 import { FormsModule } from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
 import { UrlComponent } from './admin/allUrls/url/url.component';
+import { AdminService } from './admin/allUrls/admin.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { UrlComponent } from './admin/allUrls/url/url.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [APIService,],
+  providers: [APIService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

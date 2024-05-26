@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12">
-
+        <app-alert [message]="errorMessage" *ngIf="errorMessage" (close)="onClose()"></app-alert>
         <div class="proba">
             <table>
                 <thead>
@@ -13,13 +13,8 @@
                         <th>Number of clicks</th>
                     </tr>
                 </thead>
-                <tr>
-                    <td>{{urlList.popular.originalUrl}}</td>
-                    <td>{{urlList.popular.url}}</td>
-                    <td>{{urlList.popular.numOfClicks}}</td>
-                </tr>
             </table>
-            <app-url *ngFor="let url of urlList.all; let i = index" [url]="url"></app-url>
+            <app-url *ngFor="let url of urls; let i = index" [url]="url"></app-url>
         </div>
     </div>
 </div>

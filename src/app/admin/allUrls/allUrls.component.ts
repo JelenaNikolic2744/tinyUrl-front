@@ -1,18 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { FullDataUrl } from 'src/app/models';
+import { AdminService } from './admin.service';
 
 @Component({
   selector: 'app-allUrls',
   templateUrl: './allUrls.component.html',
   styleUrls: ['./allUrls.component.css']
 })
-export class AllUrlsComponent {
-  urlList = {
-    popular: { originalUrl: "http://tmarkot.com", urlPart: "asd", url: "http://asd.com", numOfClicks: 3 }, all: [
-      { originalUrl: "http://petar.com", urlPart: "asd", url: "http://asd.com", numOfClicks: 3 },
-      { originalUrl: "http://ivan.com", urlPart: "asd", url: "http://asd.com", numOfClicks: 3 },
-      { originalUrl: "http://milos.com", urlPart: "asd", url: "http://asd.com", numOfClicks: 3 },
-      { originalUrl: "http://sanja.com", urlPart: "asd", url: "http://asd.com", numOfClicks: 3 }
-    ]
-  }
+export class AllUrlsComponent implements OnInit {
+  urls: FullDataUrl[] = [];
+  sub: Subscription;
+  errorMessage =''
 
+  constructor(private adminService: AdminService) { }
+
+  ngOnInit() {
+    this.urls = this.adminService.getUrls()
+    this.sub = this.adminService.urlsChanged.subscribe(
+      {
+        next: (urls: FullDataUrl[]) => {
+          this.urls = urls;
+        },
+        error: (error) => {
+          this.errorMessage = error.error.message
+          console.log(error)
+        }
+      }
+    );
+  }
 }
