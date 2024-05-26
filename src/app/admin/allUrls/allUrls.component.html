@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-sm-12">
+
+        <div class="proba">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="4">All shortened urls</th>
+                    </tr>
+                    <tr>
+                        <th>Original URL</th>
+                        <th>Shortened URL</th>
+                        <th>Number of clicks</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>{{urlList.popular.originalUrl}}</td>
+                    <td>{{urlList.popular.url}}</td>
+                    <td>{{urlList.popular.numOfClicks}}</td>
+                </tr>
+            </table>
+            <app-url *ngFor="let url of urlList.all; let i = index" [url]="url"></app-url>
+        </div>
+    </div>
+</div>
