@@ -6,6 +6,10 @@ table{
     margin: 0 auto;
 }
 
+.proba{
+    padding-top: 50px;
+}
+
 th{
     width: 200px;
     border: 2px black solid;
