@@ -29,4 +29,8 @@ export class AllUrlsComponent implements OnInit {
       }
     );
   }
+
+  onClose() {
+    this.errorMessage = '';
+  }
 }
