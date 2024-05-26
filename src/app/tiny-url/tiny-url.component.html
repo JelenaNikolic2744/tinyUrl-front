@@ -1,0 +1,15 @@
+<div class="row">
+    <app-alert [message]="errorMessage" *ngIf="errorMessage" (close)="onClose()"></app-alert>
+    <div class="move col-sm-12" style="padding-top: 30px;">
+        <div style="padding-bottom: 15px;">
+            <label for="fullURL">Input your URL</label><br />
+            <input type="text" id="fullURL" required name="fullURL" style="width: -moz-available" [(ngModel)]="fullUrl"/>
+        </div>
+        <button class="btn btn-primary" type="submit" (click)="shortURL()" [disabled]="!fullUrl">Submit</button>
+    
+        <div style="padding-bottom: 15px; padding-top: 15px;">
+            <label for="shortUrl">Your shortened URL</label><br />
+            <input type="text" id="shortUrl" style="width: -moz-available" required name="shortUrl" [(ngModel)]="shortenedUrl" disabled/>
+        </div>
+    </div>
+</div>
